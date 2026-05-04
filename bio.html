@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katherine Breuss — Founder &amp; Lead Strategist | AG45</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A2A44;
+    --navy-deep: #0F1B2E;
+    --navy-soft: #2C4060;
+    --gold: #C9A24B;
+    --gold-soft: #D4B373;
+    --gold-pale: #E8D9B0;
+    --cream: #F9F6EE;
+    --cream-warm: #F2EDDF;
+    --ink: #2C3E50;
+    --ink-soft: #4A5A6E;
+    --ink-mute: #8895A4;
+    --rule: rgba(26,42,68,0.15);
+    --rule-soft: rgba(26,42,68,0.08);
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== Logo ===== */
+  .logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1px;
+    line-height: 1;
+  }
+  .logo-ag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+  }
+  .logo-45 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0;
+    vertical-align: super;
+    margin-left: 1px;
+  }
+
+  /* ===== Header ===== */
+  header {
+    background: var(--cream);
+    border-bottom: 0.5px solid var(--rule-soft);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+  .nav {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--ink-soft);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy);
+    color: var(--cream) !important;
+    padding: 12px 24px;
+    border-radius: 2px;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--navy-deep); color: var(--cream); }
+
+  /* ===== Container ===== */
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ===== Hero ===== */
+  .bio-hero {
+    background: var(--cream);
+    padding: 80px 0 60px;
+    border-bottom: 0.5px solid var(--rule-soft);
+  }
+  .bio-hero-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .bio-portrait {
+    width: 320px;
+    height: 400px;
+    background-image: url('images/katherine-breuss.png');
+    background-size: 140%;
+    background-position: center 30%;
+    background-color: var(--cream-warm);
+    border-radius: 2px;
+    position: relative;
+  }
+  .bio-portrait::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--gold);
+    border-radius: 2px;
+    z-index: -1;
+  }
+  .bio-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .bio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.05;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .bio-name em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .bio-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+  .bio-location {
+    font-size: 14px;
+    color: var(--ink-mute);
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== The Frame ===== */
+  .bio-frame {
+    background: var(--cream);
+    padding: 80px 0;
+  }
+  .bio-frame-content {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .bio-frame p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .bio-frame p + p {
+    margin-top: 24px;
+  }
+  .bio-frame em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* ===== Section meta ===== */
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-eyebrow.center {
+    text-align: center;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    max-width: 760px;
+    margin-bottom: 32px;
+  }
+  h2.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h2 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ===== Timeline ===== */
+  .timeline-section {
+    background: var(--cream-warm);
+    padding: 100px 0;
+  }
+  .timeline-intro {
+    max-width: 760px;
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+  .timeline-intro p {
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .timeline {
+    max-width: 920px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 140px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .timeline-chapter {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 60px;
+    margin-bottom: 72px;
+    position: relative;
+  }
+  .timeline-chapter:last-child {
+    margin-bottom: 0;
+  }
+  .timeline-chapter::before {
+    content: '';
+    position: absolute;
+    left: 134px;
+    top: 12px;
+    width: 13px;
+    height: 13px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--cream-warm);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+
+  .timeline-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+    text-align: right;
+    padding-right: 8px;
+    padding-top: 4px;
+  }
+  /* Editorial treatment for decade plurals (1990s, 2000s, etc.)
+     The "s" renders smaller and slightly elevated so the year reads cleanly
+     while the s functions as a quiet plural marker. */
+  .decade-s {
+    font-size: 0.7em;
+    vertical-align: 0.15em;
+    letter-spacing: 0.02em;
+    font-style: normal;
+  }
+  .timeline-content {
+    padding-left: 20px;
+  }
+  .timeline-location {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .timeline-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+  }
+  .timeline-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .timeline-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .timeline-body p + p {
+    margin-top: 16px;
+  }
+  .timeline-pullquote {
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: rgba(201, 162, 75, 0.06);
+    border-left: 2px solid var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+  .timeline-photo {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .timeline-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.02);
+  }
+  .timeline-photo-caption {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.5px;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .timeline-placeholder {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* ===== Why AG45 ===== */
+  .why-ag45 {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 100px 0;
+  }
+  .why-ag45 .section-eyebrow {
+    color: var(--gold-soft);
+  }
+  .why-ag45 h2 {
+    color: var(--cream);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .why-ag45 h2 em {
+    color: var(--gold-soft);
+  }
+  .why-ag45-content {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .why-ag45-content p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--cream);
+    font-weight: 300;
+  }
+  .why-ag45-content p + p {
+    margin-top: 24px;
+  }
+
+  /* ===== Pull quote ===== */
+  .pull-quote-section {
+    background: var(--cream);
+    padding: 100px 0;
+    text-align: center;
+  }
+  .pull-quote-large {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--navy);
+    max-width: 800px;
+    margin: 0 auto 32px;
+    font-weight: 500;
+  }
+  .pull-quote-attribution {
+    font-size: 14px;
+    color: var(--ink-mute);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ===== CTA section ===== */
+  .bio-cta {
+    background: var(--cream-warm);
+    padding: 80px 0;
+    text-align: center;
+    border-top: 0.5px solid var(--rule-soft);
+  }
+  .bio-cta h2 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .bio-cta p {
+    max-width: 600px;
+    margin: 0 auto 32px;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .cta-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 0;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .btn-primary:hover { background: var(--navy-deep); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+  }
+  .btn-secondary:hover { background: var(--navy); color: var(--cream); }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--navy-deep);
+    color: var(--cream);
+    padding: 60px 0 30px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .logo .logo-ag { color: var(--cream); }
+  .footer-brand .logo .logo-45 { color: var(--gold); }
+  .footer-tagline {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold-soft);
+  }
+  .footer-address {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+  .footer-col-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--cream);
+    font-size: 14px;
+    line-height: 2;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .footer-col a:hover { opacity: 1; }
+  .footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid rgba(201, 162, 75, 0.15);
+    font-size: 12px;
+    color: var(--ink-mute);
+    line-height: 1.7;
+  }
+  .footer-bottom > div + div { margin-top: 12px; }
+  .footer-tm { font-size: 11px; }
+
+  /* ===== Mobile ===== */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .bio-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .bio-portrait { width: 240px; height: 320px; margin: 0 auto; }
+    .bio-name { font-size: 40px; }
+    .bio-role { font-size: 20px; }
+    .timeline::before { left: 20px; }
+    .timeline-chapter {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding-left: 50px;
+    }
+    .timeline-chapter::before {
+      left: 14px;
+    }
+    .timeline-year {
+      text-align: left;
+      padding-right: 0;
+    }
+    .timeline-content { padding-left: 0; }
+    h2 { font-size: 32px; }
+    .pull-quote-large { font-size: 28px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav">
+    <a href="/" class="logo">
+      <span class="logo-ag">AccelerateGrowth</span><span class="logo-45">45</span>
+    </a>
+    <nav class="nav-links">
+      <a href="/#programs">Programs</a>
+      <a href="/#firm">The Firm</a>
+      <a href="/#cases">Case Studies</a>
+      <a href="/about">Leadership</a>
+      <a href="https://grow.accelerategrowth45.com" class="nav-cta">Take the True Owner's Audit</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Bio Hero ===== -->
+<section class="bio-hero">
+  <div class="container">
+    <div class="bio-hero-grid">
+      <div class="bio-portrait"></div>
+      <div>
+        <p class="bio-eyebrow">Founder &amp; Lead Strategist</p>
+        <h1 class="bio-name">Katherine <em>Breuss</em></h1>
+        <p class="bio-role">25+ years building, scaling, and rebuilding businesses across four continents.</p>
+        <p class="bio-location">📍 Mequon, Wisconsin</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== The Frame ===== -->
+<section class="bio-frame">
+  <div class="container">
+    <div class="bio-frame-content">
+      <p>I built AG45 because I needed it. Owners building real businesses — the kind PE firms eventually buy — need <em>board-level discipline</em> and the right people at the table. Most of them don't have it.</p>
+      <p>I've spent more than 25 years as an operator, advisor, and strategist across the U.S., the U.K., Asia Pacific, and Australia. My strength is <em>discernment through chaos and change</em> — knowing what's actually happening underneath the noise, and knowing who needs to be at the table to do something about it.</p>
+      <p>I've worked inside global finance. I've run a consulting firm in Singapore through the 2008 crisis. I've raised four kids and started over more than once. I've also let a business fold that should have been gold — because I didn't have the right people around me when it mattered. <em>That's the lesson AG45 was built on.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Timeline ===== -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="timeline-intro">
+      <p class="section-eyebrow center">The path</p>
+      <h2 class="center">The hard path is the one I've walked.<br><em>That's why this works.</em></h2>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Origin -->
+      <div class="timeline-chapter">
+        <div class="timeline-year">1990<span class="decade-s">s</span></div>
+        <div class="timeline-content">
+          <div class="timeline-location">📍 United States</div>
+          <h3 class="timeline-title">Hospitality. People. <em>Ownership.</em></h3>
+          <div class="timeline-body">
+            <p>I came up through university and the hospitality industry, leading and managing people from the front line. That's where I learned what actually matters in a business — how customers feel, how staff feel, who decides what gets fixed when something breaks.</p>
+            <p><em>That's where I started seeing how ownership really works — and what most owners miss.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- London / Goldman -->
+      <div class="timeline-chapter">
+        <div class="timeline-year">Early 2000<span class="decade-s">s</span></div>
+        <div class="timeline-content">
+          <div class="timeline-location">📍 London, United Kingdom</div>
+          <h3 class="timeline-title">Inside <em>Goldman Sachs.</em></h3>
+          <div class="timeline-body">
+            <p>I worked at Goldman Sachs in London in Equity Research — but my role was on the cultural side. I supported the firm through changes in how they hired, led, and worked. From the inside of one of the most demanding institutions in global finance, I watched what it takes to build and rebuild the systems that make high-performance work actually work.</p>
+            <p><em>Most of what I know about leadership architecture, I learned by watching Goldman do it at scale.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Singapore launch -->
+      <div class="timeline-chapter">
+        <div class="timeline-year">2004</div>
+        <div class="timeline-content">
+          <div class="timeline-location">📍 Singapore</div>
+          <h3 class="timeline-title">Building across <em>the region.</em></h3>
+          <div class="timeline-body">
+            <p>By 2004 I'd relocated to Singapore and launched my own consulting firm. The work spanned the region — and the spectrum. Investment banks, large conglomerates, wealth management firms, and small businesses navigating leadership, organizational change, commerciality, and strategy.</p>
+            <p>Singapore is where I learned the fundamentals don't change with size. A 50-person business and a 50,000-person business face the same questions: <em>who's at the table, how they lead, what they're actually building.</em> Only the scale of the answer changes.</p>
+            <div class="timeline-photo">
+              <img src="images/era-singapore.jpg" alt="Singapore — Chinese New Year with the boys">
+              <p class="timeline-photo-caption">Singapore — Chinese New Year with the boys.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2008 crisis response / blended learning -->
+      <div class="timeline-chapter">
+        <div class="timeline-year">2008</div>
+        <div class="timeline-content">
+          <div class="timeline-location">📍 Asia Pacific</div>
+          <h3 class="timeline-title">The 2008 crisis. <em>And what came out of it.</em></h3>
+          <div class="timeline-body">
+            <p>Your business can have the best strategy and the cleanest growth plan, and external circumstances will still force a pivot. <em>The more strategic and aligned you already are, the more likely that pivot succeeds.</em> Mine did.</p>
+            <p>When the global financial crisis hit, the consulting model had to change. I pivoted by pioneering one of the region's first blended online learning platforms — combining live strategic work with scalable digital infrastructure.</p>
+            <div class="timeline-pullquote">"Crises don't only reveal who you are — they reveal what you've built. Or destroyed."</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Asia digital expansion (post-2008) -->
+      <div class="timeline-chapter">
+        <div class="timeline-year">Post-2008</div>
+        <div class="timeline-content">
+          <div class="timeline-location">📍 Asia Pacific</div>
+          <h3 class="timeline-title">Partnering on <em>the leading edge.</em></h3>
+          <div class="timeline-body">
+            <p>As video was just emerging as a learning medium, I partnered with the founders of an early-stage graduate recruitment platform. Their build was recruitment. <em>Mine was the professional learning layer underneath it</em> — graduate development, delivered through video at a moment when almost no one was doing it.</p>
+            <p>Both got off the ground. Neither survived.</p>
+            <p><em>Great ideas don't always make great businesses.</em> The recruitment side and the learning side never merged into the integrated thing they should have been. And I overcommitted — too much on my plate, not enough discipline about which fights actually mattered.</p>
+            <p>What I learned then is <em>exactly</em> what I now help owners avoid: the difference between a strategy that's exciting and a strategy that's actually executable. Brilliant doesn't beat focused.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Australia -->
+      <div class="timeline-chapter">
+        <div class="timeline-year">2016</div>
+        <div class="timeline-content">
+          <div class="timeline-location">📍 Australia</div>
+          <h3 class="timeline-title">Family. Chiropractic. <em>Remediation.</em></h3>
+          <div class="timeline-body">
+            <p>In 2016 I moved with my family to Australia. The first year I was raising four small children largely on my own.</p>
+            <div class="timeline-photo">
+              <img src="images/era-australia-family.jpg" alt="Australia — with three of the four">
+              <p class="timeline-photo-caption">Australia — with three of the four.</p>
+            </div>
+            <p>I stepped back from running a firm — and eventually closed the business down.</p>
+            <p><em>That's the one I should have kept.</em></p>
+            <p>If I'd held it through COVID and sold it on the other side, it would have been quite fruitful. I didn't. The reason wasn't strategy or capability — it was that <em>I didn't have the right advisors at my table.</em> I made the call alone. Closing it was the right answer to the wrong question.</p>
+            <p>What I did next mattered. I'd spent years studying behavior and the mind, and the body was the last piece of the system I wanted to understand. So I started an undergraduate degree in chiropractic medicine — the spine is the communication channel to the body, and I wanted to know how that engineering actually worked. I kept my mind busy, kept building. I loved it.</p>
+            <div class="timeline-photo">
+              <img src="images/era-australia-chiro.jpg" alt="Australia — chiropractic clinical work">
+              <p class="timeline-photo-caption">Australia — chiropractic clinical practice.</p>
+            </div>
+            <p>Then COVID hit. I stopped the degree and returned to consulting — this time in financial services remediation. <em>The kind of work that teaches you how institutions actually fail and how they actually rebuild.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wisconsin / AG45 -->
+      <div class="timeline-chapter">
+        <div class="timeline-year">2023 — Now</div>
+        <div class="timeline-content">
+          <div class="timeline-location">📍 Mequon, Wisconsin</div>
+          <h3 class="timeline-title">Founding <em>AG45.</em></h3>
+          <div class="timeline-body">
+            <p>I came back to the U.S. in 2023 with one thing settled: <em>the next thing I built would solve the problem that cost me the last one.</em></p>
+            <p>AG45 is for the owners I respect most — the ones building real businesses who want a real choice when the time comes. The methodology is half the work. The other half is <em>the room</em> — the right people at the right altitude, at the table when it counts.</p>
+            <p>That's the firm I built.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Why AG45 ===== -->
+<section class="why-ag45">
+  <div class="container">
+    <p class="section-eyebrow center">Why this works</p>
+    <h2>Pattern recognition is real <em>because the path was real.</em></h2>
+    <div class="why-ag45-content">
+      <p>Every advisor talks about strategy. Most have never sat in the operator's seat. I have — across continents, across crises, across rebuilds.</p>
+      <p><em>That's the difference.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="bio-cta">
+  <div class="container">
+    <p class="section-eyebrow center">Connect</p>
+    <h2 class="center">Begin where you are.</h2>
+    <p>Take the True Owner's Audit to see where you are across the 5A Framework. Or schedule a discovery call to talk through whether AG45 is the right fit for the work ahead.</p>
+    <div class="cta-row">
+      <a href="https://grow.accelerategrowth45.com" class="btn btn-primary">Take the True Owner's Audit</a>
+      <a href="mailto:team@ag45.com?subject=Discovery%20conversation" class="btn btn-secondary">Schedule a discovery call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-ag">AccelerateGrowth</span><span class="logo-45">45</span>
+        </div>
+        <p class="footer-tagline">Board-level discipline.<br>Leader Run. Owner free.</p>
+        <p class="footer-address">📍 1017 W Glen Oaks Ln<br>Mequon, WI 53092</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Programs</div>
+        <a href="https://grow.accelerategrowth45.com/own-it">The Ownership Blueprint™</a>
+        <a href="mailto:team@ag45.com?subject=Owner%27s%20Circle%20inquiry">The Owner's Circle™</a>
+        <a href="mailto:team@ag45.com?subject=Strategic%20Cadence%20inquiry">Strategic Cadence™</a>
+        <a href="mailto:team@ag45.com?subject=Leader%20Run%20inquiry">Leader Run™</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">The Firm</div>
+        <a href="/#firm">About AG45</a>
+        <a href="/about">Leadership</a>
+        <a href="/#cases">Case Studies</a>
+        <a href="https://grow.accelerategrowth45.com">Take the True Owner's Audit</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:team@ag45.com">team@ag45.com</a>
+        <a href="tel:2623008487">262-300-8487</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 AccelerateGrowth45 LLC. All rights reserved.</div>
+      <div class="footer-tm">True Ownership™, Map of Me™, The 5A Framework™, The Ownership Blueprint™, The Owner's Circle™, Strategic Cadence™, Leader Run™, The True Owner's Audit™, and The Leader Run™ Audit are trademarks of AccelerateGrowth45 LLC.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Programs — AG45</title>
+<meta name="description" content="AG45 programs: The Ownership Blueprint, The Owner's Circle, Strategic Cadence, and Leader Run. Four altitudes. One methodology.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A2A44;
+    --navy-deep: #0F1B2E;
+    --navy-soft: #2C4060;
+    --gold: #C9A24B;
+    --gold-soft: #D4B373;
+    --gold-pale: #E8D9B0;
+    --cream: #F9F6EE;
+    --cream-warm: #F2EDDF;
+    --ink: #2C3E50;
+    --ink-soft: #4A5A6E;
+    --ink-mute: #8895A4;
+    --rule: rgba(26,42,68,0.15);
+    --rule-soft: rgba(26,42,68,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== Top bar ===== */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; height: 56px;
+    background: var(--cream); border-bottom: 1px solid var(--rule-soft);
+    z-index: 100; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 32px;
+  }
+  .topbar-logo { display: inline-flex; align-items: baseline; gap: 1px; line-height: 1; }
+  .topbar-logo-ag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; color: var(--navy); letter-spacing: -0.5px;
+  }
+  .topbar-logo-45 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; font-weight: 500; color: var(--gold);
+    vertical-align: super; margin-left: 1px;
+  }
+  .topbar-back {
+    font-size: 13px; color: var(--ink-soft); letter-spacing: 0.5px;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .topbar-back:hover { color: var(--navy); }
+
+  /* ===== Deck ===== */
+  .deck {
+    position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 60px;
+    opacity: 0; transform: translateX(40px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    pointer-events: none;
+    background: var(--cream);
+  }
+  .slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+  .slide.prev { transform: translateX(-40px); }
+
+  /* Inside-slide content scroll on smaller heights */
+  .slide-inner {
+    width: 100%; max-width: 1100px;
+    max-height: calc(100vh - 56px - 100px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px 4px 100px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule) transparent;
+  }
+  .slide-inner::-webkit-scrollbar { width: 6px; }
+  .slide-inner::-webkit-scrollbar-track { background: transparent; }
+  .slide-inner::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+
+  /* ===== Shared elements ===== */
+  .eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px; font-weight: 500;
+  }
+  .gold-rule { width: 60px; height: 1px; background: var(--gold); }
+
+  /* ===== Slide 1 — Cover ===== */
+  .cover-inner { text-align: center; max-width: 880px; margin: 0 auto; padding-bottom: 40px; }
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 9vw, 112px); font-weight: 500;
+    line-height: 1; letter-spacing: -2px; color: var(--navy);
+    margin-bottom: 28px;
+  }
+  .cover-strapline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 32px); font-style: italic;
+    color: var(--navy-soft); line-height: 1.4;
+    max-width: 640px; margin: 0 auto 36px;
+  }
+  .cover-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 32px; }
+  .cover-tagline {
+    font-size: 14px; color: var(--ink-mute); letter-spacing: 1px;
+    text-transform: uppercase; font-weight: 500;
+  }
+
+  /* ===== Slide 2 — Architecture overview ===== */
+  .arch-header { text-align: center; margin-bottom: 48px; }
+  .arch-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 64px); font-weight: 500;
+    line-height: 1.1; color: var(--navy); margin-bottom: 16px;
+  }
+  .arch-title em { font-style: italic; color: var(--gold); }
+  .arch-sub {
+    font-size: 16px; color: var(--ink-soft);
+    max-width: 600px; margin: 0 auto;
+  }
+  .arch-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  }
+  .arch-card {
+    padding: 28px 24px;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.5);
+    border-radius: 2px;
+    text-align: left;
+    display: flex; flex-direction: column;
+  }
+  .arch-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; color: var(--gold);
+    font-weight: 500; line-height: 1; margin-bottom: 12px;
+  }
+  .arch-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; line-height: 1.2;
+    color: var(--navy); margin-bottom: 10px;
+  }
+  .arch-card-meta {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 14px; font-weight: 500;
+  }
+  .arch-card-desc {
+    font-size: 13px; color: var(--ink-soft); line-height: 1.5;
+    margin-top: auto;
+  }
+  .arch-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 18px;
+    color: var(--navy-soft); text-align: center;
+    margin-top: 36px;
+  }
+
+  /* ===== Slides 3-6 — Individual programs ===== */
+  .prog-inner { max-width: 920px; margin: 0 auto; }
+  .prog-header { margin-bottom: 24px; }
+  .prog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 80px); font-weight: 500;
+    line-height: 1; letter-spacing: -1.5px;
+    color: var(--navy); margin-bottom: 12px;
+  }
+  .prog-title em { font-style: italic; color: var(--gold); }
+  .prog-meta {
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 500; margin-bottom: 24px;
+  }
+  .prog-divider { width: 60px; height: 1px; background: var(--gold); margin-bottom: 28px; }
+  .prog-lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.4vw, 26px); font-style: italic;
+    color: var(--navy); line-height: 1.4; margin-bottom: 32px;
+  }
+  .prog-body {
+    color: var(--ink-soft); font-size: 16px; line-height: 1.65;
+  }
+  .prog-body p { margin-bottom: 16px; }
+  .prog-body p:last-child { margin-bottom: 0; }
+  .prog-body em { font-style: italic; color: var(--navy); }
+  .prog-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    margin-top: 32px; padding-top: 28px;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .prog-detail-h {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 8px;
+  }
+  .prog-detail-p {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.5;
+  }
+  .prog-detail-p strong { color: var(--navy); font-weight: 500; }
+
+  /* Pull-quote within program slides */
+  .prog-pullquote {
+    margin: 28px 0;
+    padding: 24px 28px;
+    background: rgba(201, 162, 75, 0.06);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 2px 2px 0;
+  }
+  .prog-pullquote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+  .prog-pullquote-attr {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-top: 12px;
+  }
+
+  /* Phase blocks (used on Blueprint slide) */
+  .prog-phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 28px;
+  }
+  .prog-phase {
+    padding: 22px 24px;
+    border: 1px solid var(--rule-soft);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+  }
+  .prog-phase-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .prog-phase-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .prog-phase-title em { font-style: italic; }
+  .prog-phase-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .prog-phase-desc strong { color: var(--navy); font-weight: 500; }
+
+  /* "What's inside" element list (Page 2 of each program) */
+  .prog-inside-header {
+    margin-bottom: 32px;
+  }
+  .prog-inside-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; font-weight: 500;
+  }
+  .prog-inside-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px); font-weight: 500;
+    line-height: 1.05; letter-spacing: -1px;
+    color: var(--navy); margin-bottom: 12px;
+  }
+  .prog-inside-title em { font-style: italic; color: var(--gold); }
+  .prog-inside-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-style: italic;
+    color: var(--navy-soft); line-height: 1.4;
+  }
+  .prog-inside-divider { width: 60px; height: 1px; background: var(--gold); margin: 20px 0 0; }
+
+  .prog-inside-list {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px;
+    margin-top: 36px;
+  }
+  .prog-inside-item {
+    display: flex; gap: 16px;
+  }
+  .prog-inside-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; color: var(--gold); font-weight: 500;
+    line-height: 1; min-width: 36px;
+    padding-top: 2px;
+  }
+  .prog-inside-content {
+    flex: 1;
+  }
+  .prog-inside-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 500;
+    color: var(--navy); line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .prog-inside-name em { font-style: italic; color: var(--gold); }
+  .prog-inside-desc {
+    font-size: 13.5px; color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .prog-inside-desc strong { color: var(--navy); font-weight: 500; }
+
+  /* ===== Slide 4 — Blueprint two-phase split layout ===== */
+  .prog-phases-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+    margin-top: 32px;
+    align-items: start;
+  }
+  .prog-phase-col {
+    border-top: 2px solid var(--gold);
+    padding-top: 18px;
+  }
+  .prog-phase-col-future {
+    border-top-color: var(--rule);
+    opacity: 0.92;
+  }
+  .prog-phase-col-status {
+    font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .prog-phase-col-future .prog-phase-col-status {
+    color: var(--ink-mute);
+  }
+  .prog-phase-col-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 4px;
+  }
+  .prog-phase-col-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 500;
+    color: var(--navy); line-height: 1.1; margin-bottom: 6px;
+  }
+  .prog-phase-col-name em { font-style: italic; color: var(--gold); }
+  .prog-phase-col-spine {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; font-style: italic;
+    color: var(--navy-soft); margin-bottom: 18px;
+  }
+  .prog-phase-col-list {
+    display: flex; flex-direction: column;
+    gap: 10px;
+  }
+  .prog-phase-col-item {
+    display: flex; gap: 12px;
+    align-items: baseline;
+  }
+  .prog-phase-col-bullet {
+    color: var(--gold); font-size: 11px;
+    line-height: 1.6; min-width: 8px;
+  }
+  .prog-phase-col-future .prog-phase-col-bullet {
+    color: var(--ink-mute);
+  }
+  .prog-phase-col-text {
+    font-size: 13px; color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .prog-phase-col-text strong {
+    color: var(--navy); font-weight: 500;
+  }
+  @media (max-width: 700px) {
+    .prog-phases-split {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  /* ===== Slide 7 — How to choose (with architectural board background) ===== */
+  .slide-choose {
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle architectural "the room" background using SVG */
+  .slide-choose::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(180deg, rgba(26,42,68,0.04) 0%, rgba(26,42,68,0) 40%),
+      radial-gradient(ellipse 60% 40% at 50% 65%, rgba(26,42,68,0.06) 0%, rgba(26,42,68,0) 70%);
+    pointer-events: none;
+  }
+  .slide-choose::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 80%; height: 35%;
+    background:
+      linear-gradient(180deg,
+        rgba(44,64,96,0) 0%,
+        rgba(44,64,96,0.06) 40%,
+        rgba(44,64,96,0.10) 100%);
+    /* Suggestion of a board table edge */
+    border-top: 1px solid rgba(201,162,75,0.12);
+    border-radius: 4px 4px 0 0;
+    pointer-events: none;
+  }
+  .choose-inner {
+    position: relative; z-index: 2;
+    max-width: 920px; margin: 0 auto; text-align: center;
+  }
+  .choose-header { margin-bottom: 40px; }
+  .choose-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 64px); font-weight: 500;
+    line-height: 1.1; color: var(--navy); margin-bottom: 16px;
+  }
+  .choose-title em { font-style: italic; color: var(--gold); }
+  .choose-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.4vw, 22px); font-style: italic;
+    color: var(--navy-soft); max-width: 600px; margin: 0 auto;
+  }
+  .choose-matrix {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    text-align: left; margin-top: 8px;
+  }
+  .choose-row {
+    padding: 22px 24px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--rule-soft);
+    border-radius: 2px;
+    backdrop-filter: blur(2px);
+  }
+  .choose-row-label {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 10px;
+  }
+  .choose-row-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; color: var(--navy); margin-bottom: 8px;
+    line-height: 1.3; font-style: italic;
+  }
+  .choose-row-a {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.5;
+  }
+  .choose-row-a strong { color: var(--navy); font-weight: 500; }
+
+  /* ===== Slide 8 — Next step ===== */
+  .next-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .next-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 80px); font-weight: 500;
+    line-height: 1; letter-spacing: -1.5px;
+    color: var(--navy); margin-bottom: 24px;
+  }
+  .next-title em { font-style: italic; color: var(--gold); }
+  .next-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-style: italic;
+    color: var(--navy-soft); line-height: 1.4;
+    margin-bottom: 48px;
+  }
+  .next-ctas {
+    display: flex; flex-direction: column; gap: 14px; align-items: center;
+  }
+  .next-cta {
+    display: inline-block; padding: 16px 32px;
+    font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 500; border-radius: 2px;
+    transition: all 0.2s ease;
+    min-width: 320px;
+  }
+  .next-cta-primary {
+    background: var(--navy); color: var(--cream);
+    border: 1px solid var(--navy);
+  }
+  .next-cta-primary:hover {
+    background: var(--navy-deep); border-color: var(--navy-deep);
+  }
+  .next-cta-secondary {
+    background: transparent; color: var(--navy);
+    border: 1px solid var(--navy);
+  }
+  .next-cta-secondary:hover {
+    background: var(--navy); color: var(--cream);
+  }
+  .next-tagline {
+    margin-top: 56px;
+    font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 500;
+  }
+
+  /* ===== Controls ===== */
+  .controls {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 24px;
+    z-index: 50;
+    background: rgba(249,246,238,0.92); backdrop-filter: blur(8px);
+    padding: 12px 20px; border-radius: 100px; border: 1px solid var(--rule-soft);
+  }
+  .ctrl-btn {
+    width: 36px; height: 36px; border: 1px solid var(--rule);
+    background: transparent; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy); font-size: 16px; line-height: 1;
+    transition: all 0.2s ease; font-family: inherit;
+  }
+  .ctrl-btn:hover {
+    background: var(--navy); color: var(--cream); border-color: var(--navy);
+  }
+  .ctrl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .ctrl-btn:disabled:hover { background: transparent; color: var(--navy); border-color: var(--rule); }
+  .slide-counter {
+    font-size: 12px; letter-spacing: 1px; color: var(--ink-soft); font-weight: 500;
+    min-width: 50px; text-align: center; font-variant-numeric: tabular-nums;
+  }
+  .indicators { display: flex; gap: 8px; }
+  .indicator {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--rule); cursor: pointer; border: none; padding: 0;
+    transition: all 0.2s ease;
+  }
+  .indicator.active { background: var(--gold); transform: scale(1.3); }
+  .indicator:hover:not(.active) { background: var(--ink-mute); }
+  .kbd-hint {
+    position: fixed; bottom: 32px; right: 32px;
+    font-size: 11px; color: var(--ink-mute);
+    letter-spacing: 1px; text-transform: uppercase;
+    z-index: 50;
+  }
+  .kbd-hint kbd {
+    display: inline-block; padding: 2px 6px;
+    border: 1px solid var(--rule); border-radius: 3px;
+    font-family: inherit; font-size: 10px; margin: 0 2px;
+    color: var(--navy); background: var(--cream);
+  }
+
+  /* ===== Mobile ===== */
+  @media (max-width: 900px) {
+    .arch-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .prog-grid { grid-template-columns: 1fr; gap: 24px; }
+    .prog-phases { grid-template-columns: 1fr; gap: 16px; }
+    .prog-inside-list { grid-template-columns: 1fr; gap: 20px; }
+    .choose-matrix { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .topbar { padding: 0 16px; height: 48px; }
+    .deck { top: 48px; }
+    .slide { padding: 20px 16px; }
+    .slide-inner { max-height: calc(100vh - 48px - 90px); padding-bottom: 90px; }
+    .cover-title { font-size: 48px; letter-spacing: -1px; }
+    .cover-strapline { font-size: 18px; }
+    .arch-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .arch-card { padding: 18px 14px; }
+    .arch-card-num { font-size: 28px; }
+    .arch-card-name { font-size: 18px; }
+    .prog-title { font-size: 40px; letter-spacing: -1px; }
+    .prog-lede { font-size: 18px; }
+    .prog-body { font-size: 15px; }
+    .choose-title { font-size: 36px; }
+    .next-title { font-size: 44px; }
+    .next-sub { font-size: 18px; }
+    .next-cta { min-width: 280px; padding: 14px 24px; }
+    .controls { bottom: 16px; gap: 12px; padding: 8px 14px; }
+    .kbd-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <span class="topbar-logo-ag">AccelerateGrowth</span><span class="topbar-logo-45">45</span>
+  </a>
+  <a href="index.html" class="topbar-back">← Back to site</a>
+</div>
+
+<!-- Deck -->
+<div class="deck">
+
+  <!-- Slide 1: Cover -->
+  <div class="slide active" data-slide="1">
+    <div class="slide-inner">
+      <div class="cover-inner">
+        <div class="eyebrow">AG45 Programs</div>
+        <h1 class="cover-title">Four altitudes.<br>One methodology.</h1>
+        <p class="cover-strapline">Owners build the asset PE firms would buy — at the level of engagement that matches the work ahead.</p>
+        <div class="cover-rule"></div>
+        <div class="cover-tagline">Built on True Ownership™</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2: Architecture overview -->
+  <div class="slide" data-slide="2">
+    <div class="slide-inner">
+      <div class="arch-header">
+        <div class="eyebrow">The Architecture</div>
+        <h2 class="arch-title">Four programs. <em>Four altitudes.</em></h2>
+        <p class="arch-sub">From self-paced digital work to multi-year board-level engagements. Same methodology. Different room.</p>
+      </div>
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-card-num">01</div>
+          <div class="arch-card-name">The Ownership Blueprint™</div>
+          <div class="arch-card-meta">Solo · Digital · 45 days</div>
+          <div class="arch-card-desc">Self-directed digital application of the True Ownership™ methodology. Yourself first, then your business.</div>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-num">02</div>
+          <div class="arch-card-name">The Owner's Circle™</div>
+          <div class="arch-card-meta">Group of 4 · Strategist-led</div>
+          <div class="arch-card-desc">Four non-competing owners and an AG45 strategist. The members bring the businesses. The room becomes the Board.</div>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-num">03</div>
+          <div class="arch-card-name">Strategic Cadence™</div>
+          <div class="arch-card-meta">1:1 · Monthly · 12-month minimum</div>
+          <div class="arch-card-desc">A 1:1 monthly engagement with your Lead Strategist, supported by Board-level advisors behind the scene.</div>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-num">04</div>
+          <div class="arch-card-name">Leader Run™</div>
+          <div class="arch-card-meta">Multi-year · Board · $10M+</div>
+          <div class="arch-card-desc">A 3–5 year engagement that prepares the owner to break free of the business — succession, sale, or going passive.</div>
+        </div>
+      </div>
+      <p class="arch-line">Same methodology. Different room.</p>
+    </div>
+  </div>
+
+  <!-- Slide 3: The Ownership Blueprint -->
+  <div class="slide" data-slide="3">
+    <div class="slide-inner">
+      <div class="prog-inner">
+        <div class="prog-header">
+          <div class="eyebrow">Program 01</div>
+          <h2 class="prog-title">The <em>Ownership</em><br>Blueprint™</h2>
+          <div class="prog-meta">Solo · Digital · 45 days</div>
+          <div class="prog-divider"></div>
+          <p class="prog-lede">Yourself first. Second your business. <em>Because it starts with you.</em></p>
+        </div>
+
+        <!-- Why -->
+        <div class="prog-pullquote">
+          <p class="prog-pullquote-text">Most owners arrive having done some version of personal work — a coach, a book, a retreat. The work touches the same topics: direction, identity, values. <em>But it lands somewhere different.</em> AG45's owner spine isn't the destination. It's the foundation.</p>
+        </div>
+
+        <!-- What -->
+        <div class="prog-body">
+          <p>The Ownership Blueprint™ is a self-directed digital application of the True Ownership™ methodology — the same five disciplines AG45 applies in its flagship engagements, structured into a 45-day digital experience for solopreneurs and owners ready to do the foundational work themselves.</p>
+        </div>
+
+        <!-- How -->
+        <div class="prog-phases">
+          <div class="prog-phase">
+            <div class="prog-phase-num">Phase 01 · Own It</div>
+            <div class="prog-phase-title"><em>The owner spine.</em></div>
+            <div class="prog-phase-desc">Forty-five days at the questions most owners have circled but few have landed: <strong>what you're actually building, who you are when the work gets hard, what you'll say no to.</strong> The output isn't insight — it's an operating system, documented and referable.</div>
+          </div>
+          <div class="prog-phase">
+            <div class="prog-phase-num">Phase 02 · Build It</div>
+            <div class="prog-phase-title"><em>The business spine.</em></div>
+            <div class="prog-phase-desc">Once Phase 1 is documented, Phase 2 builds the business architecture that fits what you're actually building. <strong>Strategy, structure, and operating systems</strong> — connected to the owner spine, so the business inherits your clarity, not your defaults.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: The Ownership Blueprint - Page 2: Two phases, both inside -->
+  <div class="slide" data-slide="4">
+    <div class="slide-inner">
+      <div class="prog-inner">
+        <div class="prog-inside-header">
+          <div class="prog-inside-eyebrow">Program 01 · Inside the Blueprint</div>
+          <h2 class="prog-inside-title">Two phases. <em>One Blueprint.</em></h2>
+          <p class="prog-inside-sub">Phase 1 builds the owner spine. Phase 2 builds the business spine on top of it. Each phase stands on its own; together they produce the full Blueprint.</p>
+          <div class="prog-inside-divider"></div>
+        </div>
+
+        <div class="prog-phases-split">
+
+          <!-- Phase 1 — Own It -->
+          <div class="prog-phase-col">
+            <div class="prog-phase-col-status">Launches summer 2026</div>
+            <div class="prog-phase-col-num">Phase 01</div>
+            <div class="prog-phase-col-name"><em>Own It.</em></div>
+            <div class="prog-phase-col-spine">The owner spine — yourself first.</div>
+            <div class="prog-phase-col-list">
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>Structured progression.</strong> Day-by-day movement through the methodology — the structure is the application.</span>
+              </div>
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>Map of Me™.</strong> Personal strategy and alignment — the foundational tool that anchors every AG45 engagement.</span>
+              </div>
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>Clarity, documented.</strong> Direction, identity, values, alignment — captured so the work can be acted on, not just felt.</span>
+              </div>
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>A daily strategic practice.</strong> The cadence built into how you work — making the methodology a habit, not a project.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 2 — Build It -->
+          <div class="prog-phase-col prog-phase-col-future">
+            <div class="prog-phase-col-status">Launches late 2026</div>
+            <div class="prog-phase-col-num">Phase 02</div>
+            <div class="prog-phase-col-name"><em>Build It.</em></div>
+            <div class="prog-phase-col-spine">The business spine — built on Phase 1's foundation.</div>
+            <div class="prog-phase-col-list">
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>Foundation.</strong> The operating ground the business stands on.</span>
+              </div>
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>Identity &amp; Culture.</strong> Who the business is, who it's for.</span>
+              </div>
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>Priorities &amp; Strategy.</strong> Direction translated into action.</span>
+              </div>
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>Board of Advisors.</strong> The structure around the owner.</span>
+              </div>
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>The Plan.</strong> What gets done, in what order.</span>
+              </div>
+              <div class="prog-phase-col-item">
+                <span class="prog-phase-col-bullet">◆</span>
+                <span class="prog-phase-col-text"><strong>The Operating Rhythm.</strong> The cadence the business runs on.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: The Owner's Circle -->
+  <div class="slide" data-slide="5">
+    <div class="slide-inner">
+      <div class="prog-inner">
+        <div class="prog-header">
+          <div class="eyebrow">Program 02</div>
+          <h2 class="prog-title">The <em>Owner's</em><br>Circle™</h2>
+          <div class="prog-meta">Group of 4 · Strategist-led · 12-month commitment</div>
+          <div class="prog-divider"></div>
+          <p class="prog-lede">Four non-competing owners. One AG45 strategist. <em>The room becomes the Board.</em></p>
+        </div>
+
+        <!-- Why -->
+        <div class="prog-pullquote">
+          <p class="prog-pullquote-text">You're the leader and the operator. <em>The room changes that.</em> Most peer groups are masterminds — neutral facilitators keeping the conversation going. The Circle is different. An AG45 strategist leads the room, applying the True Ownership™ methodology to each member's work.</p>
+        </div>
+
+        <!-- What -->
+        <div class="prog-body">
+          <p>A small group is the point. <em>Four members, not eight.</em> Non-competing businesses, not adjacent. Strategist-led, not facilitated. The composition is what makes the Circle work — and what makes AG45 selective about who gets in. <em>The Circle is a 12-month commitment</em> — because real progress compounds, and the work isn't a one-and-done event. Application and fit call required.</p>
+        </div>
+
+        <!-- How -->
+        <div class="prog-phases">
+          <div class="prog-phase">
+            <div class="prog-phase-num">Session 01 · Forward</div>
+            <div class="prog-phase-title"><em>Priorities and pattern recognition.</em></div>
+            <div class="prog-phase-desc">Each owner brings the priorities they're working through. <strong>The room responds — questions, perspectives, pattern recognition from across industries.</strong> The strategist holds the methodology.</div>
+          </div>
+          <div class="prog-phase">
+            <div class="prog-phase-num">Session 02 · Back</div>
+            <div class="prog-phase-title"><em>Accountability and follow-through.</em></div>
+            <div class="prog-phase-desc">Each owner brings what they did since last session. <strong>The room holds them accountable — for commitments made, work attempted, results produced.</strong> Honest follow-through, in front of peers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 6: The Owner's Circle - Page 2: What's Inside -->
+  <div class="slide" data-slide="6">
+    <div class="slide-inner">
+      <div class="prog-inner">
+        <div class="prog-inside-header">
+          <div class="prog-inside-eyebrow">Program 02 · Inside the Circle</div>
+          <h2 class="prog-inside-title">Six elements. <em>One curated room.</em></h2>
+          <p class="prog-inside-sub">The structure that turns a peer group into a Board — and a Board into accountable strategic discipline.</p>
+          <div class="prog-inside-divider"></div>
+        </div>
+        <div class="prog-inside-list">
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">01</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">The <em>True Owner's Audit™</em> as the entry.</div>
+              <div class="prog-inside-desc">Free, light, self-directed. <strong>Frames where you are across the 5A Framework</strong> before the engagement begins.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">02</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">An AG45 strategist <em>leading the room.</em></div>
+              <div class="prog-inside-desc"><strong>Not a neutral facilitator.</strong> The strategist applies the True Ownership™ methodology to each member's work, surfaces patterns, holds the discipline.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">03</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">Three peer owners. <em>Non-competing businesses.</em></div>
+              <div class="prog-inside-desc">Four total members in the Circle. <strong>Curated by AG45</strong> for strategic seriousness and willingness to act.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">04</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">Two 2-hour sessions <em>monthly.</em></div>
+              <div class="prog-inside-desc"><strong>Strategy In</strong> (priorities forward) + <strong>Execution Out</strong> (commitments back). The cadence is structural, not personality-dependent.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">05</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">Quarterly <em>State-of-the-Business</em> presentations.</div>
+              <div class="prog-inside-desc">Each member walks the room through where their business stands. <strong>Builds the discipline of honest strategic review.</strong></div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">06</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">AG45 <em>app integration.</em></div>
+              <div class="prog-inside-desc">Commitments tracked across the cohort. Each member's progress visible to the room. <strong>Accountability becomes structural.</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: Strategic Cadence -->
+  <div class="slide" data-slide="7">
+    <div class="slide-inner">
+      <div class="prog-inner">
+        <div class="prog-header">
+          <div class="eyebrow">Program 03</div>
+          <h2 class="prog-title"><em>Strategic</em><br>Cadence™</h2>
+          <div class="prog-meta">1:1 · Monthly · 12-month minimum</div>
+          <div class="prog-divider"></div>
+          <p class="prog-lede">One strategist who knows your business deeply. <em>Board-level advisors behind the scene.</em></p>
+        </div>
+
+        <!-- Why -->
+        <div class="prog-pullquote">
+          <p class="prog-pullquote-text">The bridge between peer challenge and full Strategic Council work. <em>For owners who want a senior strategist who knows the business deeply</em> — and the structural support of AG45's broader bench, without managing it as separate engagements. The complexity stays behind the scene.</p>
+        </div>
+
+        <!-- What -->
+        <div class="prog-body">
+          <p>A single relationship at the center: you and your Lead Strategist, working monthly on strategic priorities, leadership decisions, and structural choices. When the work calls for specialist depth, your strategist pulls in advisors from AG45's broader bench. <em>You don't manage them. Your strategist does.</em></p>
+        </div>
+
+        <!-- How -->
+        <div class="prog-phases">
+          <div class="prog-phase">
+            <div class="prog-phase-num">Monthly</div>
+            <div class="prog-phase-title"><em>Working sessions.</em></div>
+            <div class="prog-phase-desc"><strong>Two-hour 1:1s with your Lead Strategist.</strong> Pre-work expected; documentation produced. The discipline of monthly strategic conversation that no business naturally creates on its own.</div>
+          </div>
+          <div class="prog-phase">
+            <div class="prog-phase-num">Quarterly · Annually</div>
+            <div class="prog-phase-title"><em>Strategic reviews.</em></div>
+            <div class="prog-phase-desc">Deeper sessions where <strong>strategic patterns become visible and decisions get made.</strong> Annual full refresh — direction recommitted to or reset, next twelve months planned with clear priorities.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: Strategic Cadence - Page 2: What's Inside -->
+  <div class="slide" data-slide="8">
+    <div class="slide-inner">
+      <div class="prog-inner">
+        <div class="prog-inside-header">
+          <div class="prog-inside-eyebrow">Program 03 · Inside Strategic Cadence</div>
+          <h2 class="prog-inside-title">Six elements. <em>Twelve months minimum.</em></h2>
+          <p class="prog-inside-sub">A working cadence built around one strategist — and the firm's full bench behind them, when the work calls for it.</p>
+          <div class="prog-inside-divider"></div>
+        </div>
+        <div class="prog-inside-list">
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">01</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">The <em>True Owner's Audit™</em> as the entry.</div>
+              <div class="prog-inside-desc">The light, top-of-funnel diagnostic. <strong>Frames where you are across the 5A Framework</strong> before the engagement begins.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">02</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">1:1 with the <em>Lead Strategist.</em></div>
+              <div class="prog-inside-desc">Monthly 2-hour working sessions. <strong>Your strategic counterpart for the duration</strong> — the relationship that anchors the engagement.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">03</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">Quarterly <em>Strategic Reviews.</em></div>
+              <div class="prog-inside-desc">Deeper sessions where <strong>the patterns of the quarter become visible.</strong> Progress evaluated, tensions surfaced, priorities set.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">04</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">Annual <em>Business Review.</em></div>
+              <div class="prog-inside-desc">Full strategic refresh once a year. <strong>The year examined honestly</strong>; the next year planned with clear priorities.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">05</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">Board-level advisors <em>behind the scene.</em></div>
+              <div class="prog-inside-desc">Specialists drawn from functional, financial, transactional, and external-relationship categories. <strong>Pulled in by your strategist when the work calls for them.</strong> You don't manage the complexity.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">06</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name"><em>True Ownership™</em> applied at altitude.</div>
+              <div class="prog-inside-desc">The 5A Framework as <strong>the operating discipline of every session</strong>, decision, and review.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 9: Leader Run -->
+  <div class="slide" data-slide="9">
+    <div class="slide-inner">
+      <div class="prog-inner">
+        <div class="prog-header">
+          <div class="eyebrow">Program 04 · Flagship</div>
+          <h2 class="prog-title"><em>Leader Run.</em><br>Owner Free.</h2>
+          <div class="prog-meta">Multi-year · Board of Advisors · $10M+ businesses</div>
+          <div class="prog-divider"></div>
+          <p class="prog-lede"><em>A multi-year engagement</em> — typically 3 to 5 years — that prepares the owner to break free of the business. Succession, sale, or going passive while retaining ownership.</p>
+        </div>
+
+        <!-- Why -->
+        <div class="prog-pullquote">
+          <p class="prog-pullquote-text">Most advisory engagements give you one strategist. <em>Leader Run™ gives you a Board.</em> A Lead Strategist anchors the relationship; a team of advisors is assembled around them — drawn from across functional, financial, transactional, and external-relationship specialties. The composition depends on the business.</p>
+        </div>
+
+        <!-- What -->
+        <div class="prog-body">
+          <p>The work doesn't optimize for one outcome. It prepares the business — and the owner — for whichever path fits their life, their family, and their economics. <em>The choice belongs to the owner, not the firm.</em> Three legitimate paths: pass it on, sell it, or stay involved without operating.</p>
+        </div>
+
+        <!-- How -->
+        <div class="prog-phases">
+          <div class="prog-phase">
+            <div class="prog-phase-num">Stage 01</div>
+            <div class="prog-phase-title"><em>Foundation.</em></div>
+            <div class="prog-phase-desc"><strong>Strategic direction set. Operating rhythm installed.</strong> The Board of Advisors assembles and embeds with the leadership team. The audit informs which specialists get drawn in.</div>
+          </div>
+          <div class="prog-phase">
+            <div class="prog-phase-num">Stage 02 · 03</div>
+            <div class="prog-phase-title"><em>Transition. Then options.</em></div>
+            <div class="prog-phase-desc"><strong>The owner's work shifts.</strong> Systems get automated; decisions get delegated; the team takes on owner-mindset accountability. Stage 3 integrates strategy and operations fully — and the path forward gets chosen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 10: Leader Run - Page 2: What's Inside -->
+  <div class="slide" data-slide="10">
+    <div class="slide-inner">
+      <div class="prog-inner">
+        <div class="prog-inside-header">
+          <div class="prog-inside-eyebrow">Program 04 · Inside Leader Run</div>
+          <h2 class="prog-inside-title">Six elements. <em>Three stages. One arc.</em></h2>
+          <p class="prog-inside-sub">A multi-year engagement built around the owner — with a Board of Advisors and the firm's full methodology applied at the highest altitude.</p>
+          <div class="prog-inside-divider"></div>
+        </div>
+        <div class="prog-inside-list">
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">01</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">1:1 with the <em>Lead Strategist.</em></div>
+              <div class="prog-inside-desc"><strong>The owner's direct strategic counterpart for the duration of the engagement.</strong> Regular working sessions, asynchronous access, documented decisions. The relationship that anchors everything else.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">02</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name"><em>Board of Advisors</em> assembled around the owner.</div>
+              <div class="prog-inside-desc">Lead Strategist plus advisors drawn from <strong>functional, financial, transactional, and external-relationship</strong> specialties. Composition is engagement-specific. The Board is yours for the duration.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">03</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">Quarterly <em>Strategic Reviews.</em></div>
+              <div class="prog-inside-desc">The whole Board convenes to review progress, surface tensions, and set the next quarter's priorities. <strong>The owner sits at the head of the table.</strong></div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">04</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name">Annual <em>Business Reviews.</em></div>
+              <div class="prog-inside-desc">Full strategic refresh. Recommitment to direction. Recalibration as conditions change. <strong>Twelve months looked at, twelve months ahead planned.</strong></div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">05</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name"><em>True Ownership™</em> at the highest altitude.</div>
+              <div class="prog-inside-desc">The 5A Framework — <strong>All In It, Align With It, Advocate For It, Act On It, Accountable To It</strong> — as the operating discipline of the entire engagement.</div>
+            </div>
+          </div>
+          <div class="prog-inside-item">
+            <div class="prog-inside-num">06</div>
+            <div class="prog-inside-content">
+              <div class="prog-inside-name"><em>Year-after</em> ongoing advisory.</div>
+              <div class="prog-inside-desc">The Board can <strong>transition into a governing Board, or stay as a strategic advisory layer.</strong> The relationship continues as long as the owner wants it to.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 11: How to choose -->
+  <div class="slide slide-choose" data-slide="11">
+    <div class="slide-inner">
+      <div class="choose-inner">
+        <div class="choose-header">
+          <div class="eyebrow">How to Choose</div>
+          <h2 class="choose-title">Which room is <em>your room?</em></h2>
+          <p class="choose-sub">The right altitude isn't about ambition. It's about what the work actually calls for right now.</p>
+        </div>
+        <div class="choose-matrix">
+          <div class="choose-row">
+            <div class="choose-row-label">Start here · 01</div>
+            <div class="choose-row-q">"I want to do the foundational work myself first."</div>
+            <div class="choose-row-a"><strong>The Ownership Blueprint™.</strong> Self-paced digital. The on-ramp into AG45's methodology.</div>
+          </div>
+          <div class="choose-row">
+            <div class="choose-row-label">Start here · 02</div>
+            <div class="choose-row-q">"I'm running the strategy and the operation alone."</div>
+            <div class="choose-row-a"><strong>The Owner's Circle™.</strong> A peer Board for owners without a leadership team to lean on.</div>
+          </div>
+          <div class="choose-row">
+            <div class="choose-row-label">Start here · 03</div>
+            <div class="choose-row-q">"I want a senior strategist who knows my business."</div>
+            <div class="choose-row-a"><strong>Strategic Cadence™.</strong> 1:1 monthly with a Lead Strategist. Board advisors behind the scene.</div>
+          </div>
+          <div class="choose-row">
+            <div class="choose-row-label">Start here · 04</div>
+            <div class="choose-row-q">"I'm building toward succession, sale, or going passive."</div>
+            <div class="choose-row-a"><strong>Leader Run™.</strong> Multi-year engagement with a full Board of Advisors. For $10M+ businesses.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 12: Next step -->
+  <div class="slide" data-slide="12">
+    <div class="slide-inner">
+      <div class="next-inner">
+        <div class="eyebrow">Next Step</div>
+        <h2 class="next-title">Begin where <em>you are.</em></h2>
+        <p class="next-sub">Start with the audit, or start with a conversation. Both lead to the right room.</p>
+        <div class="next-ctas">
+          <a href="https://grow.accelerategrowth45.com" class="next-cta next-cta-primary">Take the True Owner's Audit</a>
+          <a href="mailto:team@ag45.com?subject=Discovery%20conversation" class="next-cta next-cta-secondary">Schedule a Discovery Call</a>
+        </div>
+        <div class="next-tagline">AG45 — Built on True Ownership™</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <button class="ctrl-btn" id="prevBtn" aria-label="Previous slide">←</button>
+  <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">12</span></span>
+  <button class="ctrl-btn" id="nextBtn" aria-label="Next slide">→</button>
+  <div class="indicators" id="indicators"></div>
+</div>
+
+<!-- Keyboard hint -->
+<div class="kbd-hint">
+  <kbd>←</kbd> <kbd>→</kbd> to navigate
+</div>
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const cur = document.getElementById('currentSlide');
+  const tot = document.getElementById('totalSlides');
+  const indEl = document.getElementById('indicators');
+  let idx = 0;
+
+  tot.textContent = total;
+
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'indicator' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
+    dot.addEventListener('click', () => go(i));
+    indEl.appendChild(dot);
+  }
+  const dots = indEl.querySelectorAll('.indicator');
+
+  function go(i) {
+    if (i < 0 || i >= total) return;
+    slides[idx].classList.remove('active');
+    if (i < idx) slides[idx].classList.add('prev');
+    else slides[idx].classList.remove('prev');
+    idx = i;
+    slides[idx].classList.add('active');
+    slides[idx].classList.remove('prev');
+    cur.textContent = idx + 1;
+    dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === total - 1;
+    // Reset scroll on slide change
+    const inner = slides[idx].querySelector('.slide-inner');
+    if (inner) inner.scrollTop = 0;
+  }
+
+  prevBtn.addEventListener('click', () => go(idx - 1));
+  nextBtn.addEventListener('click', () => go(idx + 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowLeft') go(idx - 1);
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      e.preventDefault();
+      go(idx + 1);
+    }
+  });
+
+  // Touch swipe (skip if scrolling within slide-inner)
+  let tx = 0, ty = 0;
+  document.addEventListener('touchstart', (e) => {
+    tx = e.changedTouches[0].screenX;
+    ty = e.changedTouches[0].screenY;
+  });
+  document.addEventListener('touchend', (e) => {
+    const dx = tx - e.changedTouches[0].screenX;
+    const dy = ty - e.changedTouches[0].screenY;
+    // Only horizontal swipe — don't trigger on vertical scroll
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx > 0) go(idx + 1);
+      else go(idx - 1);
+    }
+  });
+
+  // Hash-based deep linking: support URLs like programs.html#slide-3
+  function getSlideFromHash() {
+    const hash = window.location.hash;
+    const m = hash.match(/^#slide-(\d+)$/);
+    if (m) {
+      const n = parseInt(m[1], 10);
+      if (n >= 1 && n <= total) return n - 1;
+    }
+    return 0;
+  }
+  window.addEventListener('hashchange', () => {
+    go(getSlideFromHash());
+  });
+
+  go(getSlideFromHash());
+})();
+</script>
+
+</body>
+</html>

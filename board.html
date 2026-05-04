@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Board — AG45</title>
+<meta name="description" content="The AG45 Board — Founder, advisors, and strategists who bring board-level discipline to owner-led businesses. The right people at the table.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A2A44;
+    --navy-deep: #0F1B2E;
+    --navy-soft: #2C4060;
+    --gold: #C9A24B;
+    --gold-soft: #D4B373;
+    --gold-pale: #E8D9B0;
+    --cream: #F9F6EE;
+    --cream-warm: #F2EDDF;
+    --ink: #2C3E50;
+    --ink-soft: #4A5A6E;
+    --ink-mute: #8895A4;
+    --rule: rgba(26,42,68,0.15);
+    --rule-soft: rgba(26,42,68,0.08);
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+  /* ===== Header / Nav ===== */
+  header {
+    position: sticky; top: 0; background: var(--cream);
+    border-bottom: 1px solid var(--rule-soft);
+    z-index: 100;
+  }
+  .nav {
+    max-width: var(--max); margin: 0 auto;
+    padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: inline-flex; align-items: baseline; gap: 1px; line-height: 1; }
+  .logo-ag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 500; color: var(--navy); letter-spacing: -0.5px;
+  }
+  .logo-45 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 500; color: var(--gold);
+    letter-spacing: 0; vertical-align: super; margin-left: 1px;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 32px;
+  }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--ink-soft);
+    letter-spacing: 0.3px; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-links a.active { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy); color: var(--cream) !important;
+    padding: 10px 18px; border-radius: 2px;
+    font-size: 13px; letter-spacing: 0.3px;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--navy-deep); }
+
+  /* ===== Page hero ===== */
+  .page-hero {
+    padding: 96px 0 56px;
+    text-align: center;
+  }
+  .page-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px; font-weight: 500;
+  }
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 84px); font-weight: 500;
+    line-height: 1; letter-spacing: -1.5px; color: var(--navy);
+    margin-bottom: 28px;
+  }
+  .page-title em { font-style: italic; color: var(--gold); }
+  .page-strapline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.6vw, 26px); font-style: italic;
+    color: var(--navy-soft); line-height: 1.4;
+    max-width: 720px; margin: 0 auto 36px;
+  }
+  .gold-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto; }
+
+  /* ===== Founder feature ===== */
+  .founder-feature {
+    padding: 64px 0 72px;
+    background: var(--cream-warm);
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+    margin-top: 32px;
+  }
+  .founder-feature-inner {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .founder-photo {
+    width: 320px;
+    height: 400px;
+    background-image: url('images/katherine-breuss.png');
+    background-size: 100%;
+    background-position: center top;
+    background-color: var(--cream);
+    border-radius: 2px;
+    position: relative;
+  }
+  .founder-eyebrow {
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px; font-weight: 500;
+  }
+  .founder-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 52px); font-weight: 500;
+    line-height: 1.05; color: var(--navy); letter-spacing: -1px;
+    margin-bottom: 6px;
+  }
+  .founder-title {
+    font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 500; margin-bottom: 22px;
+  }
+  .founder-divider { width: 50px; height: 1px; background: var(--gold); margin-bottom: 22px; }
+  .founder-bio {
+    font-size: 16px; line-height: 1.7; color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+  .founder-bio em { font-style: italic; color: var(--navy); }
+  .founder-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--navy); font-weight: 500;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 4px;
+    transition: color 0.2s;
+  }
+  .founder-link:hover { color: var(--gold); }
+
+  /* ===== Advisor grid ===== */
+  .board-section {
+    padding: 80px 0 96px;
+  }
+  .board-section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .board-section-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; font-weight: 500;
+  }
+  .board-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4.5vw, 48px); font-weight: 500;
+    line-height: 1.1; color: var(--navy); letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .board-section-title em { font-style: italic; color: var(--gold); }
+  .board-section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-style: italic; color: var(--navy-soft);
+    max-width: 580px; margin: 0 auto;
+  }
+
+  /* Group container — used when Board grows past ~10 members and grouping helps scannability.
+     Currently inactive at 5 members; CSS is ready for future use. */
+  .advisor-group {
+    margin-bottom: 64px;
+  }
+  .advisor-group:last-child {
+    margin-bottom: 0;
+  }
+  .advisor-group-header {
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .advisor-group-eyebrow {
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px; font-weight: 500;
+  }
+  .advisor-group-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 500;
+    color: var(--navy); line-height: 1.2;
+  }
+  .advisor-group-title em { font-style: italic; color: var(--gold); }
+
+  /* Auto-fit grid: scales from 1 column on mobile to 3+ on wide screens
+     based on card minimum width. Works gracefully from 4 to 20+ members. */
+  .advisor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 48px 40px;
+  }
+  .advisor-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .advisor-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--cream-warm);
+    border-radius: 2px;
+    margin-bottom: 22px;
+  }
+  .advisor-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500;
+    color: var(--navy); line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .advisor-title {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .advisor-divider { width: 32px; height: 1px; background: var(--rule); margin-bottom: 16px; }
+  .advisor-bio {
+    font-size: 14.5px; line-height: 1.65; color: var(--ink-soft);
+  }
+  .advisor-bio em { font-style: italic; color: var(--navy); }
+  .advisor-bio.placeholder {
+    font-style: italic;
+    color: var(--ink-mute);
+  }
+
+  /* ===== CTA section ===== */
+  .board-cta {
+    padding: 96px 0;
+    background: var(--navy);
+    color: var(--cream);
+    text-align: center;
+  }
+  .board-cta-eyebrow {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px; font-weight: 500;
+  }
+  .board-cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px); font-weight: 500;
+    line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px;
+  }
+  .board-cta-title em { font-style: italic; color: var(--gold-pale); }
+  .board-cta-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-style: italic;
+    color: rgba(249,246,238,0.8); max-width: 640px; margin: 0 auto 40px;
+  }
+  .cta-row {
+    display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block; padding: 16px 32px;
+    font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 500; border-radius: 2px;
+    transition: all 0.2s;
+    border: 1px solid;
+  }
+  .btn-primary { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+  .btn-primary:hover { background: var(--gold-soft); border-color: var(--gold-soft); }
+  .btn-secondary { background: transparent; color: var(--cream); border-color: var(--cream); }
+  .btn-secondary:hover { background: var(--cream); color: var(--navy); }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--navy);
+    color: rgba(249,246,238,0.7);
+    padding: 64px 0 32px;
+  }
+  footer .container { max-width: var(--max); }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(249,246,238,0.1);
+  }
+  .footer-brand .logo-ag { color: var(--cream); }
+  .footer-brand .logo-45 { color: var(--gold); }
+  .footer-tagline {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-style: italic; color: var(--gold-pale);
+    line-height: 1.4;
+  }
+  .footer-address {
+    margin-top: 16px; font-size: 13px;
+    color: rgba(249,246,238,0.55); line-height: 1.6;
+  }
+  .footer-col-title {
+    color: var(--cream); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 2px; font-weight: 500;
+    margin-bottom: 18px;
+  }
+  .footer-col a {
+    display: block; padding: 6px 0;
+    font-size: 13.5px;
+    color: rgba(249,246,238,0.65);
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold-pale); }
+  .footer-social { display: flex; gap: 12px; margin-top: 14px; }
+  .footer-social a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(249,246,238,0.2);
+    border-radius: 50%; padding: 0;
+    font-size: 11px; text-transform: lowercase;
+    color: rgba(249,246,238,0.6);
+  }
+  .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-bottom {
+    padding-top: 28px;
+    display: flex; justify-content: space-between; gap: 32px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: rgba(249,246,238,0.4);
+    line-height: 1.7;
+  }
+  .footer-tm {
+    max-width: 720px;
+  }
+
+  /* ===== Mobile ===== */
+  @media (max-width: 900px) {
+    .founder-feature-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+    .founder-photo {
+      width: 240px; height: 300px;
+      margin: 0 auto;
+    }
+    .founder-divider { margin-left: auto; margin-right: auto; }
+    /* advisor-grid auto-fits naturally — no override needed */
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+  }
+  @media (max-width: 640px) {
+    .nav-links { gap: 16px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .container { padding: 0 24px; }
+    .nav { padding: 14px 24px; }
+    .page-hero { padding: 56px 0 40px; }
+    .page-title { font-size: 44px; letter-spacing: -1px; }
+    .founder-feature { padding: 48px 0 56px; }
+    .founder-name { font-size: 36px; }
+    .board-section { padding: 56px 0 72px; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo">
+      <span class="logo-ag">AccelerateGrowth</span><span class="logo-45">45</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#programs">Programs</a>
+      <a href="index.html#firm">The Firm</a>
+      <a href="index.html#cases">Case Studies</a>
+      <a href="board.html" class="active">Board</a>
+      <a href="https://grow.accelerategrowth45.com" class="nav-cta">Take the True Owner's Audit</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Page Hero ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-eyebrow">The AG45 Board</div>
+    <h1 class="page-title">The right people <em>at the table.</em></h1>
+    <p class="page-strapline">Every AG45 engagement is shaped by the room around it. The Board is who AG45 is — operators, strategists, and specialists who bring board-level discipline to owner-led businesses.</p>
+    <div class="gold-rule"></div>
+  </div>
+</section>
+
+<!-- ===== Founder Feature ===== -->
+<section class="founder-feature">
+  <div class="container">
+    <div class="founder-feature-inner">
+      <div class="founder-photo"></div>
+      <div class="founder-content">
+        <p class="founder-eyebrow">Founder & CEO</p>
+        <h2 class="founder-name">Katherine Breuss</h2>
+        <p class="founder-title">AG45 — Mequon, Wisconsin</p>
+        <div class="founder-divider"></div>
+        <p class="founder-bio">Katherine has spent more than 25 years as an operator, advisor, and strategist across the U.S., the U.K., Asia Pacific, and Australia. Her strength is <em>discernment through chaos and change</em> — knowing what's actually happening underneath the noise, and knowing who needs to be at the table to do something about it. She founded AG45 in 2023 to build the firm she wished she'd had access to twenty-five years ago.</p>
+        <a href="bio.html" class="founder-link">Read Katherine's full bio →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Advisor Grid ===== -->
+<section class="board-section">
+  <div class="container">
+    <div class="board-section-header">
+      <div class="board-section-eyebrow">The Advisors</div>
+      <h2 class="board-section-title">A Board built around <em>the work.</em></h2>
+      <p class="board-section-sub">Each advisor brings a specific function — and the discipline to make it count when an owner needs it.</p>
+    </div>
+
+    <div class="advisor-grid">
+
+      <!--
+        ARCHITECTURE NOTE FOR FUTURE GROWTH:
+        At 5–10 members, keep the flat grid (current state).
+        At 10+ members, wrap groups in <div class="advisor-group"> with optional <div class="advisor-group-header"> like:
+
+          <div class="advisor-group">
+            <div class="advisor-group-header">
+              <p class="advisor-group-eyebrow">The Strategic Council</p>
+              <h3 class="advisor-group-title">Lead Strategists</h3>
+            </div>
+            <div class="advisor-grid">
+              <div class="advisor-card">...</div>
+              ...
+            </div>
+          </div>
+
+        Repeat for additional groups. CSS is already in place.
+      -->
+
+            <!-- Leighann Lovely -->
+      <div class="advisor-card">
+        <div class="advisor-photo" style="background-image: url('images/board-leighann.jpg');"></div>
+        <h3 class="advisor-name">Leighann Lovely</h3>
+        <p class="advisor-title">Sales Advisor</p>
+        <div class="advisor-divider"></div>
+        <p class="advisor-bio">Leighann is the Founder of Love Your Sales, a fractional sales practice for small and mid-sized businesses. With twenty years across human resources, staffing, and business development, <em>she brings the human side of sales</em> — guiding clients through the decision-making process that turns conversations into committed work. She is the host of the Love Your Sales Podcast and was named to Marquis Who's Who in America in 2023.</p>
+      </div>
+      <!-- Krystle Rogers -->
+      <div class="advisor-card">
+        <div class="advisor-photo" style="background-image: url('images/board-krystle.jpg');"></div>
+        <h3 class="advisor-name">Krystle Rogers</h3>
+        <p class="advisor-title">Lead Strategist</p>
+        <div class="advisor-divider"></div>
+        <p class="advisor-bio">Krystle is a strategist, certified coach (ACC, M.Ed.), and entrepreneur who supports owners and organizations in building capacity, making aligned decisions, and driving sustainable growth. She is co-owner of Best Ed Business, an enterprise specializing in strategic sourcing and supply for community-focused organizations. <em>Her practice combines learning architecture with leadership development</em> — translating insight into action while keeping the long view.</p>
+      </div>
+      <!-- Ari Milner -->
+      <div class="advisor-card">
+        <div class="advisor-photo" style="background-image: url('images/board-ari.jpg');"></div>
+        <h3 class="advisor-name">Ari Milner</h3>
+        <p class="advisor-title">Technology Advisor</p>
+        <div class="advisor-divider"></div>
+        <p class="advisor-bio">Ari is the Owner of PlanIT, where he has spent the past seven years guiding businesses through technology decisions and digital infrastructure. With eighteen years across IT, websites, and online marketing — and three startups behind him — Ari serves as a Virtual Chief Information Officer (vCIO) for clients who need technology strategy without a full-time CTO. <em>He brings the eye that sees what the system actually needs to do — and the hands to build it.</em></p>
+      </div>
+      <!-- Nikki Lee -->
+      <div class="advisor-card">
+        <div class="advisor-photo" style="background-image: url('images/board-nikki.jpg');"></div>
+        <h3 class="advisor-name">Nikki Lee</h3>
+        <p class="advisor-title">Brand, Systems & AI Advisor</p>
+        <div class="advisor-divider"></div>
+        <p class="advisor-bio placeholder">Bio in development — full version coming soon.</p>
+      </div>
+      <!-- Billy Cannestra -->
+      <div class="advisor-card">
+        <div class="advisor-photo" style="background-image: url('images/board-billy.jpg');"></div>
+        <h3 class="advisor-name">Billy Cannestra</h3>
+        <p class="advisor-title">SEO Marketing Advisor</p>
+        <div class="advisor-divider"></div>
+        <p class="advisor-bio">Billy spent thirty years in design, marketing, and brand work — including 25 years at William Eisner & Associates, where he led campaigns for national brands. He co-created Homeboyz Graphics, an inner-city youth program that taught ex-gang members and at-risk teens design and web programming. Today he runs Ctrl Tactics, a freelance practice supporting small businesses. <em>He brings the eye that sees what brand can actually do for a business — and the discipline to deliver it.</em></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="board-cta">
+  <div class="container">
+    <p class="board-cta-eyebrow">Begin where you are</p>
+    <h2 class="board-cta-title">Sit at <em>the right table.</em></h2>
+    <p class="board-cta-sub">Take the True Owner's Audit to see where you are across the 5A Framework. Or schedule a discovery call to talk through whether AG45 is the right fit for the work ahead.</p>
+    <div class="cta-row">
+      <a href="https://grow.accelerategrowth45.com" class="btn btn-primary">Take the True Owner's Audit</a>
+      <a href="mailto:team@ag45.com?subject=Discovery%20conversation" class="btn btn-secondary">Schedule a discovery call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-ag">AccelerateGrowth</span><span class="logo-45">45</span>
+        </div>
+        <p class="footer-tagline">Board-level discipline.<br>Leader Run. Owner free.</p>
+        <p class="footer-address">📍 1017 W Glen Oaks Ln<br>Mequon, WI 53092</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Programs</div>
+        <a href="programs.html#slide-3">The Ownership Blueprint™</a>
+        <a href="programs.html#slide-5">The Owner's Circle™</a>
+        <a href="programs.html#slide-7">Strategic Cadence™</a>
+        <a href="programs.html#slide-9">Leader Run™</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">The Firm</div>
+        <a href="index.html#firm">About AG45</a>
+        <a href="board.html">The Board</a>
+        <a href="index.html#cases">Case Studies</a>
+        <a href="https://grow.accelerategrowth45.com">Take the True Owner's Audit</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:team@ag45.com">team@ag45.com</a>
+        <a href="tel:2623008487">262-300-8487</a>
+        <div class="footer-social">
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="Instagram">ig</a>
+          <a href="#" title="YouTube">yt</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 AccelerateGrowth45 LLC. All rights reserved.</div>
+      <div class="footer-tm">True Ownership™, Map of Me™, The 5A Framework™, The Ownership Blueprint™, The Owner's Circle™, Strategic Cadence™, Leader Run™, and The True Owner's Audit™ are trademarks of AccelerateGrowth45 LLC.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
